@@ -28,14 +28,14 @@ export default function Pomodoro() {
     }, [baseSeconds, start])
 
     useEffect(() => {
-            if (baseMinutes != defaultMinutes) {
+            if (baseMinutes !== defaultMinutes) {
                 setBaseMinutes(defaultMinutes);
                 setBaseSeconds(0);
             }
     }, [type, settings])
 
-    if (baseSeconds == -1) {
-        if (baseMinutes == 0) { 
+    if (baseSeconds === -1) {
+        if (baseMinutes === 0) { 
             //Time is up
             setBaseSeconds(0);
             setTimeOut(true);
@@ -94,9 +94,9 @@ export default function Pomodoro() {
                 </div>
             </div>
             <div className="menu">
-                <button className={type == 'sessionTime' ? 'type-btn active' : 'type-btn'} onClick={(e) => switchType('sessionTime')} disabled={type == 'sessionTime' && 'disabled'}>Session</button>
-                <button className={type == 'shortTime' ? 'type-btn active' : 'type-btn'} onClick={(e) => switchType('shortTime')} disabled={type == 'shortTime' && 'disabled'}>Short</button>
-                <button className={type == 'longTime' ? 'type-btn active' : 'type-btn'} onClick={(e) => switchType('longTime')} disabled={type == 'longTime' && 'disabled'}>Long</button>
+                <button className={type === 'sessionTime' ? 'type-btn active' : 'type-btn'} onClick={(e) => switchType('sessionTime')} disabled={type === 'sessionTime' && 'disabled'}>Session</button>
+                <button className={type === 'shortTime' ? 'type-btn active' : 'type-btn'} onClick={(e) => switchType('shortTime')} disabled={type === 'shortTime' && 'disabled'}>Short</button>
+                <button className={type === 'longTime' ? 'type-btn active' : 'type-btn'} onClick={(e) => switchType('longTime')} disabled={type === 'longTime' && 'disabled'}>Long</button>
             </div>
             <div className="footer">
                 {settings && 
@@ -113,7 +113,7 @@ export default function Pomodoro() {
                     </>
                 }
             </div>
-            <p class="attribution">Podomoro app by <a href="#">Alyssie</a><button className="settings-btn" onClick={(e) => settings ? openSettings(false) : openSettings(true)}><img src={SettingsIcon} /></button></p>
+            <p className="attribution">Podomoro app by <a href="#">Alyssie</a><button className="settings-btn" onClick={(e) => settings ? openSettings(false) : openSettings(true)}><img src={SettingsIcon} /></button></p>
         </div>
     )
 }
