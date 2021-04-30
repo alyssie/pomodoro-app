@@ -1,8 +1,6 @@
 import React, { useState, useEffect }from 'react'
 import TimeSettings from './TimeSettings';
 import SettingsIcon from './img/settings.png';
-import PlayIcon from './img/play.png';
-import PauseIcon from './img/pause.png';
 import ReplayIcon  from './img/replay.png';
 import './style.scss'
 
