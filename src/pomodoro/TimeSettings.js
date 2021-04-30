@@ -1,4 +1,4 @@
-import React, { useState, useEffect, useRef }from 'react'
+import React, { useState, useRef }from 'react'
 import './style.scss'
 
 
@@ -7,8 +7,8 @@ export default function TimeSettings({timeType}) {
     const inc = useRef(null);
     const dec = useRef(null);
     const type = timeType;
-    const initialTime = parseInt(localStorage.getItem(type));
-    const [newTime, setNewTime] = useState(initialTime);
+    const initialTime = parseInt(sessionStorage.getItem(type));
+    const [newTime, setNewTime] = useState(initialTime ? initialTime : 25);
     const decrement = () => { dec.current = setInterval(() => setNewTime(newTime => newTime - 1), 100) };
     const increment = () => { inc.current = setInterval(() => setNewTime(newTime => newTime + 1), 100) };
 
@@ -25,7 +25,7 @@ export default function TimeSettings({timeType}) {
 
     function setTime(){
         setNewTime(newTime);
-        localStorage.setItem(type, newTime); 
+        sessionStorage.setItem(type, newTime); 
         timeoutClear(); 
     }
 

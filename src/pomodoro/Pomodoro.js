@@ -11,11 +11,17 @@ export default function Pomodoro() {
     const [settings, setSettings] = useState(false);
     const [timeOut, setTimeOut] = useState(false);
     const [start, setStart] = useState(false); 
-    const db = parseInt(localStorage.getItem(type));
+    const db = parseInt(sessionStorage.getItem(type));
     const defaultMinutes = db ? db : 25;
     const [baseSeconds, setBaseSeconds] = useState(0);
     const [baseMinutes, setBaseMinutes] = useState(defaultMinutes);
-    
+
+    if (!db) {
+        sessionStorage.setItem('sessionTime', '25');
+        sessionStorage.setItem('shortTime', '10');
+        sessionStorage.setItem('longTime', '5');
+    }
+
     useEffect(() => {
         if (start) {
             const timer = (baseSeconds >= 0) && setInterval(() => setBaseSeconds(baseSeconds - 1), 1000);
