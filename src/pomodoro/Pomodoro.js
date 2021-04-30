@@ -84,7 +84,7 @@ export default function Pomodoro() {
         <div id="pomodoro">
             <h1 className="title">Pomodoro</h1>
             <div className="block">
-                <butto className="replay-btn" onClick={resetTime}><img src={ReplayIcon}/></butto>
+                <button className="replay-btn" onClick={resetTime}><img src={ReplayIcon}/></button>
                 <div className={start ? 'bg one animate' : 'bg one'}></div>
                 <div className={start ? 'bg two animate' : 'bg two'}></div>
                 <div className={start ? 'bg three animate' : 'bg three'}></div>
