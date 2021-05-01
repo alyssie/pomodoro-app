@@ -7,7 +7,7 @@
     margin: 0 auto;
     padding: 25px;
     width: 300px;
-    overflow-y: hidden;
+    overflow-x: hidden;
     font-family: 'Sniglet', cursive;
     user-select: none;
     -moz-user-select: none;
@@ -271,6 +271,10 @@
 
 img{
     width: 20px;
+}
+
+a:focus-visible{
+    outline: 0;
 }
 
 @keyframes bubble-1 {

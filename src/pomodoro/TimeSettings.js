@@ -1,8 +1,6 @@
 import React, { useState, useRef }from 'react'
 import './style.scss'
 
-
-
 export default function TimeSettings({timeType}) {
     const inc = useRef(null);
     const dec = useRef(null);

@@ -84,7 +84,7 @@ export default function Pomodoro() {
         <div id="pomodoro">
             <h1 className="title">Pomodoro</h1>
             <div className="block">
-                <button className="replay-btn" onClick={resetTime}><img src={ReplayIcon}/></button>
+                <button className="replay-btn" onClick={resetTime}><img src={ReplayIcon} alt="Replay"/></button>
                 <div className={start ? 'bg one animate' : 'bg one'}></div>
                 <div className={start ? 'bg two animate' : 'bg two'}></div>
                 <div className={start ? 'bg three animate' : 'bg three'}></div>
@@ -113,7 +113,7 @@ export default function Pomodoro() {
                     </>
                 }
             </div>
-            <p className="attribution">Podomoro app by <a href="#">Alyssie</a><button className="settings-btn" onClick={(e) => settings ? openSettings(false) : openSettings(true)}><img src={SettingsIcon} /></button></p>
+            <p className="attribution">Podomoro app by <a href="#">Alyssie</a><button className="settings-btn" onClick={(e) => settings ? openSettings(false) : openSettings(true)}><img src={SettingsIcon} alt="Settings" /></button></p>
         </div>
     )
 }
