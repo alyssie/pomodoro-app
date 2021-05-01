@@ -16,8 +16,8 @@ export default function Pomodoro() {
 
     if (!db) {
         sessionStorage.setItem('sessionTime', '25');
-        sessionStorage.setItem('shortTime', '10');
-        sessionStorage.setItem('longTime', '5');
+        sessionStorage.setItem('shortTime', '5');
+        sessionStorage.setItem('longTime', '10');
     }
 
     useEffect(() => {
@@ -84,11 +84,11 @@ export default function Pomodoro() {
         <div id="pomodoro">
             <h1 className="title">Pomodoro</h1>
             <div className="block">
-                <button className="replay-btn" onClick={resetTime}><img src={ReplayIcon} alt="Replay"/></button>
+                {baseMinutes < defaultMinutes && <button className="replay-btn" onClick={resetTime}><img src={ReplayIcon} alt="Replay" /></button>}
                 <div className={start ? 'bg one animate' : 'bg one'}></div>
                 <div className={start ? 'bg two animate' : 'bg two'}></div>
                 <div className={start ? 'bg three animate' : 'bg three'}></div>
-                <div className="bg four" onClick={startTime}>
+                <div className={start ? 'bg four on' : 'bg four'} onClick={startTime}>
                     <p className="timer">{baseMinutes.toLocaleString('en-US', { minimumIntegerDigits: 2, useGrouping: false })}:{baseSeconds.toLocaleString('en-US', { minimumIntegerDigits: 2, useGrouping: false })}</p>
                     <p className="sub">{start ? 'Pause' : 'Start' }</p>
                 </div>
