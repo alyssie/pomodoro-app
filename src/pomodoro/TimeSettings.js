@@ -29,6 +29,7 @@ export default function TimeSettings({timeType}) {
 
     return (
         <div className="option">
+            <p className="typetitle">{type.slice(0, -4)}</p>
             <div className="setter">
                 <button onClick={(e) => newTime > 0 && setNewTime(newTime - 1)} onMouseDown={(e) => newTime > 0 && decrement()} onMouseUp={setTime} onMouseLeave={setTime}>-</button>
                 <p className="number">{newTime.toLocaleString('en-US', {minimumIntegerDigits: 2, useGrouping: false})}</p>

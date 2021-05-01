@@ -1,6 +1,7 @@
 import React, { useState, useEffect }from 'react'
 import TimeSettings from './TimeSettings';
 import SettingsIcon from './img/settings.png';
+import SettingsMode from './img/settings-mode.png';
 import ReplayIcon  from './img/replay.png';
 import './style.scss'
 
@@ -79,7 +80,6 @@ export default function Pomodoro() {
         setStart(false);
     }
 
-    // <p onClick={(e) => setApply(apply + 1)}>Restart</p>
     return (
         <div id="pomodoro">
             <h1 className="title">Pomodoro</h1>
@@ -89,17 +89,25 @@ export default function Pomodoro() {
                 <div className={start ? 'bg two animate' : 'bg two'}></div>
                 <div className={start ? 'bg three animate' : 'bg three'}></div>
                 <div className={start ? 'bg four on' : 'bg four'} onClick={startTime}>
-                    <p className="timer">{baseMinutes.toLocaleString('en-US', { minimumIntegerDigits: 2, useGrouping: false })}:{baseSeconds.toLocaleString('en-US', { minimumIntegerDigits: 2, useGrouping: false })}</p>
-                    <p className="sub">{start ? 'Pause' : 'Start' }</p>
+                    {settings ?
+                        <img src={SettingsMode} alt="Settings Mode"/>
+                        :
+                        <>
+                            <p className="timer">{baseMinutes.toLocaleString('en-US', { minimumIntegerDigits: 2, useGrouping: false })}:{baseSeconds.toLocaleString('en-US', { minimumIntegerDigits: 2, useGrouping: false })}</p>
+                            <p className="sub">{start ? 'Pause' : 'Start' }</p>
+                        </>
+                    }
                 </div>
             </div>
-            <div className="menu">
-                <button className={type === 'sessionTime' ? 'type-btn active' : 'type-btn'} onClick={(e) => switchType('sessionTime')} disabled={type === 'sessionTime' && 'disabled'}>Session</button>
-                <button className={type === 'shortTime' ? 'type-btn active' : 'type-btn'} onClick={(e) => switchType('shortTime')} disabled={type === 'shortTime' && 'disabled'}>Short</button>
-                <button className={type === 'longTime' ? 'type-btn active' : 'type-btn'} onClick={(e) => switchType('longTime')} disabled={type === 'longTime' && 'disabled'}>Long</button>
-            </div>
+            {!settings &&
+                <div className="menu">
+                    <button className={type === 'sessionTime' ? 'primary-btn active' : 'primary-btn'} onClick={(e) => switchType('sessionTime')} disabled={type === 'sessionTime' && 'disabled'}>Session</button>
+                    <button className={type === 'shortTime' ? 'primary-btn active' : 'primary-btn'} onClick={(e) => switchType('shortTime')} disabled={type === 'shortTime' && 'disabled'}>Short</button>
+                    <button className={type === 'longTime' ? 'primary-btn active' : 'primary-btn'} onClick={(e) => switchType('longTime')} disabled={type === 'longTime' && 'disabled'}>Long</button>
+                </div>
+            }
             <div className="footer">
-                {settings && 
+                {settings ?
                     <>
                         <div className="settings">
                             <TimeSettings timeType={'sessionTime'}>
@@ -109,11 +117,13 @@ export default function Pomodoro() {
                             <TimeSettings timeType={'longTime'}>
                             </TimeSettings>
                         </div>
-                    <button className="close-btn" onClick={(e) => openSettings(false)}>Close</button>
+                        <button className="primary-btn" onClick={(e) => openSettings(false)}>Set timer</button>
                     </>
+                    :
+                    <button className="settings-btn" onClick={(e) => settings ? openSettings(false) : openSettings(true)}><span>Settings</span> <img src={SettingsIcon} alt="Settings" /></button>
                 }
             </div>
-            <p className="attribution">Podomoro app by <a href="#">Alyssie</a><button className="settings-btn" onClick={(e) => settings ? openSettings(false) : openSettings(true)}><img src={SettingsIcon} alt="Settings" /></button></p>
+            <p className="attribution">Podomoro app by <a href="#">Alyssie</a></p>
         </div>
     )
 }
