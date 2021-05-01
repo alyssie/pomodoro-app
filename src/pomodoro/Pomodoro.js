@@ -8,7 +8,7 @@ export default function Pomodoro() {
     const [type, setType] = useState('sessionTime');
     const [settings, setSettings] = useState(false);
     const [timeOut, setTimeOut] = useState(false);
-    const [start, setStart] = useState(false); 
+    const [start, setStart] = useState(false);
     const db = parseInt(sessionStorage.getItem(type));
     const defaultMinutes = db ? db : 25;
     const [baseSeconds, setBaseSeconds] = useState(0);
@@ -28,10 +28,10 @@ export default function Pomodoro() {
     }, [baseSeconds, start])
 
     useEffect(() => {
-            if (baseMinutes !== defaultMinutes) {
-                setBaseMinutes(defaultMinutes);
-                setBaseSeconds(0);
-            }
+        if (baseMinutes !== defaultMinutes) {
+            setBaseMinutes(defaultMinutes);
+            setBaseSeconds(0);
+        }
     }, [type, settings])
 
     if (baseSeconds === -1) {
@@ -84,7 +84,7 @@ export default function Pomodoro() {
         <div id="pomodoro">
             <h1 className="title">Pomodoro</h1>
             <div className="block">
-                {start && baseMinutes < defaultMinutes && <button className="replay-btn" onClick={resetTime}><img src={ReplayIcon} alt="Replay" /></button>}
+                {baseMinutes < defaultMinutes && <button className="replay-btn" onClick={resetTime}><img src={ReplayIcon} alt="Replay" /></button>}
                 <div className={start ? 'bg one animate' : 'bg one'}></div>
                 <div className={start ? 'bg two animate' : 'bg two'}></div>
                 <div className={start ? 'bg three animate' : 'bg three'}></div>

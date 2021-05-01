@@ -74,6 +74,9 @@
             -webkit-tap-highlight-color: transparent;
             background: transparent;
             border: 0;
+            opacity: 0;
+            animation: fade 0.1s linear forwards;
+            -webkit-animation: fade 0.1s linear forwards;
         }
         .bg{
             position: absolute;
@@ -339,4 +342,9 @@ a:focus-visible{
 @keyframes saved {
     0% {top: -30px; opacity: 1;}
     100% {top: -50px; opacity: 0;}
+}
+
+@keyframes fade {
+    0% {opacity: 0;}
+    100% {opacity: 1;}
 }
